@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter rows: ");
+        int r = sc.nextInt();
+
+        System.out.print("Enter columns: ");
+        int c = sc.nextInt();
+
+        // Extra row for insertion
+        int a[][] = new int[r + 1][c];
+
+        System.out.println("Enter matrix elements:");
+
+        for(int i = 0; i < r; i++) {
+            for(int j = 0; j < c; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        // Shift rows down
+        for(int i = r; i > 0; i--) {
+            for(int j = 0; j < c; j++) {
+                a[i][j] = a[i - 1][j];
+            }
+        }
+
+        // Insert new row at beginning
+        System.out.println("Enter new row elements:");
+
+        for(int j = 0; j < c; j++) {
+            a[0][j] = sc.nextInt();
+        }
+
+        r++; // increase row count
+
+        System.out.println("Matrix after insertion:");
+
+        for(int i = 0; i < r; i++) {
+            for(int j = 0; j < c; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
